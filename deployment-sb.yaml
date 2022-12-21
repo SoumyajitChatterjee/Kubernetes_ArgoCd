@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sb-deployment
+  labels:
+    app: sb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-api-container
+  template:
+    metadata:
+      labels:
+        app: springboot-api-container
+    spec:
+      containers:
+      - name: sb-api
+        image: jchatter123/spring-boot-db:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

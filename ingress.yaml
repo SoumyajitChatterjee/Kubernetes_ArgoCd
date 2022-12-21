@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-hello-spring-api
+spec:
+  rules:
+  - host: helloworldspringboot.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: service-springboot
+            port:
+              number: 8088
